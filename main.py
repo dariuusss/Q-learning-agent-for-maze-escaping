@@ -126,7 +126,6 @@ def q_learning():
     for episode in range(100):
         current_state = start
         visited = set()
-        steps = 0
         while current_state != finish:
             visited.add(current_state)
             actions = possible_actions(current_state, visited)
@@ -150,7 +149,6 @@ def q_learning():
             Q[current_state[0], current_state[1], action] = new_value
 
             current_state = the_next_state
-            steps += 1
 
         epsilon *= 0.9
 
