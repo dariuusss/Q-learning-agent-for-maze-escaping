@@ -152,7 +152,7 @@ def q_learning():
             current_state = the_next_state
             steps += 1
 
-        epsilon *= 0.5
+        epsilon *= 0.9
 
 
 q_learning()
