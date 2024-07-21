@@ -9,10 +9,10 @@ def initialise_multipliers():
 
     multipliers = (1, 2, 4, 5, 6)
     multipliers_map = {
-        1: 0.25,
-        2: 0.5,
-        4: 0.75,
-        5: 1.5,
-        6: 1.25
+        1: 0.5,
+        2: 0.3,
+        4: 0.2,
+        5: 2.5,
+        6: 3.08
     }
     multiplier = 1
