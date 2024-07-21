@@ -2,13 +2,13 @@ import random
 import numpy as np
 import asr
 
-def q_learning(labyrinth,start,finish,epsilon,alpha,gamma):
+def q_learning(labyrinth,start,finish,epsilon,alpha,gamma,total_episodes,decay_rate):
 
     Q = np.zeros((labyrinth.shape[0], labyrinth.shape[1], 4))  # 4 directions
 
     # 0 = up ;; 1 = down ;; 2 = left ;; 3 = right
 
-    for episode in range(100):
+    for episode in range(total_episodes):
         current_state = start
         visited = set()
         while current_state != finish:
@@ -35,6 +35,6 @@ def q_learning(labyrinth,start,finish,epsilon,alpha,gamma):
 
             current_state = the_next_state
 
-        epsilon *= 0.9
+        epsilon *= (1 - decay_rate)
 
     return Q
