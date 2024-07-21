@@ -1,5 +1,6 @@
 import multiply as mp
 
+#asr stands for actions, states and rewards
 def possible_actions(labyrinth,current_state, visited):  # current_state is a tuple of coordinates
     actions = []
     row = current_state[0]
