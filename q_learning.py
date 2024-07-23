@@ -17,9 +17,9 @@ def q_learning(labyrinth,start,finish,epsilon,alpha,gamma,total_episodes,decay_r
             if not actions:  # No valid actions left
                 break
             if random.uniform(0, 1) < epsilon:
-                action = random.choice(actions)  # Explorare
+                action = random.choice(actions)  # Explore
             else:
-                action = np.argmax(Q[current_state[0], current_state[1]])  # Exploatare
+                action = np.argmax(Q[current_state[0], current_state[1]])  # Exploit
                 if action not in actions:
                     action = random.choice(actions)  # Fall back to exploration if the action is invalid
 
