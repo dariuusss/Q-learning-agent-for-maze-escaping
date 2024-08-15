@@ -43,7 +43,7 @@ def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rat
         print("")
 
     user_answer = None
-    while user_answer != "QUIT":
-        user_answer = simpledialog.askstring("Input", "Doriti vizualizare in timp real? (YES/NO/QUIT)")
-        if user_answer == "YES":
+    while user_answer != "NO" and user_answer != "no":
+        user_answer = simpledialog.askstring("Input", "Doriti vizualizare in timp real? (YES/NO)")
+        if user_answer == "YES" or user_answer == "yes":
             visualiser.start()
