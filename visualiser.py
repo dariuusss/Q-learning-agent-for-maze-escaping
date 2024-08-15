@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from tkinter import simpledialog
 import tkinter as tk
 
-steps = 7
-interval = 0.05
+steps = 4
+interval = 0.01
 matrix = np.random.rand(8, 8)  # O matrice 8x8 cu valori aleatorii
 coordinates = [(0, 0), (0, 1), (1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
 
@@ -16,7 +16,7 @@ def interpolate_coordinates(start, end, steps):
 
 def plot_live_maze(matrix, coordinates, interval, steps):
     """Afișează matricea și animă mișcarea între coordonatele date."""
-    plt.figure(figsize=(19, 11))  # Dimensiune mare pentru figura
+    plt.figure(figsize=(19.1, 11))  # Dimensiune mare pentru figura
 
     for i in range(len(coordinates) - 1):
         start = coordinates[i]
@@ -42,9 +42,12 @@ def plot_live_maze(matrix, coordinates, interval, steps):
             plt.xlim(-0.5, matrix.shape[1] - 0.5)
             plt.ylim(matrix.shape[0] - 0.5, -0.5)
 
-            # Elimină liniile gri interne
-            plt.gca().xaxis.set_ticks_position('none')
-            plt.gca().yaxis.set_ticks_position('none')
+            # Adaugă linii negre pe marginea fiecărei celule
+            for x in range(matrix.shape[1] + 1):
+                plt.plot([x - 0.5, x - 0.5], [-0.5, matrix.shape[0] - 0.5], color='black', linewidth=1)
+
+            for y in range(matrix.shape[0] + 1):
+                plt.plot([-0.5, matrix.shape[1] - 0.5], [y - 0.5, y - 0.5], color='black', linewidth=1)
 
             plt.title(f'Mișcare de la ({start[0]},{start[1]}) la ({end[0]},{end[1]})')
 
@@ -63,8 +66,7 @@ def start():
 
     user_input = simpledialog.askinteger("Input", "Ce robot doriți să urmăriți? (1-4)", minvalue=1, maxvalue=4)
 
-    # Aici poți adăuga logica pentru a modifica coordonatele în funcție de input
-
     # Apelarea funcției de plotare
     plot_live_maze(matrix, coordinates, interval, steps)
+
 
