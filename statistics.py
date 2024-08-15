@@ -42,6 +42,8 @@ def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rat
         print((optimal_paths[i][0])[0])
         print("")
 
-    user_answer = simpledialog.askstring("Input", "Doriti vizualizare in timp real? (YES or NO)")
-    if user_answer == "YES":
-        visualiser.start()
+    user_answer = None
+    while user_answer != "QUIT":
+        user_answer = simpledialog.askstring("Input", "Doriti vizualizare in timp real? (YES/NO/QUIT)")
+        if user_answer == "YES":
+            visualiser.start()
