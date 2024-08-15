@@ -16,7 +16,7 @@ def find_best_path(start,finish,labyrinth,Q):
         if action not in actions:
             action = random.choice(actions)  # Fall back to a valid action if the chosen action is invalid
         x, y = state[0], state[1]
-        score = Q[state[0], state[1],action]
+        score = score + Q[state[0], state[1],action]
         state = asr.next_state(state, action)
         path.append(state)
     return (path,score)
