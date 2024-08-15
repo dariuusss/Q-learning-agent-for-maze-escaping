@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def interpolate_coordinates(start, end, steps):
-    """Generează coordonatele intermediare între două puncte."""
+   
     x_coords = np.linspace(start[1], end[1], steps)
     y_coords = np.linspace(start[0], end[0], steps)
     return list(zip(y_coords, x_coords))
