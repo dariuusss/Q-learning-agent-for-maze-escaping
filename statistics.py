@@ -17,10 +17,8 @@ def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rat
 
     size = len(start)
     optimal_paths = [[],[],[],[]]
-    Q_table = None
 
     for i in range(size):
-
         maze.fill_labyrinth(labyrinth, start[i], finish[i])
         mp.initialise_multipliers()
         paths = 3
@@ -32,7 +30,6 @@ def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rat
                 optimal_paths[i].append(best_path)
                 paths -= 1
 
-
     for i in range(size):
         biggest_len = max_size(optimal_paths[i])
         optimal_paths[i] = (sorted( list(filter(lambda p: len(p[0]) == biggest_len, optimal_paths[i])), key=lambda x: x[1].item() / len(x[0]), reverse=True ))[:1]
@@ -42,4 +39,3 @@ def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rat
         print(f"Robot {i + 1} discovered an optimal path of length {len(((optimal_paths[i])[0])[0])} and average score of {optimal_paths[i][0][1].item() / len(optimal_paths[i][0][0])}:\n")
         print((optimal_paths[i][0])[0])
         print("")
-
