@@ -4,9 +4,10 @@ from tkinter import simpledialog
 import tkinter as tk
 
 steps = 4
-interval = 0.01
+interval = 0.03
 matrix = np.random.rand(8, 8)  # O matrice 8x8 cu valori aleatorii
 coordinates = [(0, 0), (0, 1), (1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
+
 
 def interpolate_coordinates(start, end, steps):
     """Generează coordonatele intermediare între două puncte."""
@@ -14,9 +15,13 @@ def interpolate_coordinates(start, end, steps):
     y_coords = np.linspace(start[0], end[0], steps)
     return list(zip(y_coords, x_coords))
 
+
 def plot_live_maze(matrix, coordinates, interval, steps):
     """Afișează matricea și animă mișcarea între coordonatele date."""
     plt.figure(figsize=(19.1, 11))  # Dimensiune mare pentru figura
+
+    # Matricea de stare, inițial toată albă
+    state_matrix = np.ones(matrix.shape)
 
     for i in range(len(coordinates) - 1):
         start = coordinates[i]
@@ -26,7 +31,12 @@ def plot_live_maze(matrix, coordinates, interval, steps):
 
         for lin, col in interpolated_coords:
             plt.clf()  # Curăță figura pentru următoarea actualizare
-            plt.imshow(matrix, cmap='Blues', interpolation='nearest', aspect='auto')
+
+            # Actualizează matricea de stare
+            state_matrix[int(lin), int(col)] = 0  # 0 pentru verde, 1 pentru alb
+
+            # Afișează matricea cu culori bazate pe starea celulelor
+            plt.imshow(state_matrix, cmap='Greens', interpolation='nearest', aspect='auto')
 
             # Evidențierea elementului curent cu roșu
             plt.scatter(col, lin, s=500, color='red', edgecolor='black')
@@ -55,6 +65,7 @@ def plot_live_maze(matrix, coordinates, interval, steps):
 
     plt.show()
 
+
 def start():
     global steps
     global interval
@@ -68,5 +79,3 @@ def start():
 
     # Apelarea funcției de plotare
     plot_live_maze(matrix, coordinates, interval, steps)
-
-
