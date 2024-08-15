@@ -14,7 +14,6 @@ def max_size(my_list):
 
     return len((my_list[idx])[0])
 
-
 def analysis(start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
 
     size = len(start)

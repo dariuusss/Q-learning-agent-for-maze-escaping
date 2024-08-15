@@ -1,7 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from tkinter import simpledialog
-import tkinter as tk
 
 def interpolate_coordinates(start, end, steps):
     """Generează coordonatele intermediare între două puncte."""
@@ -58,4 +56,3 @@ def plot_live_maze(matrix, coordinates, interval, steps):
             plt.pause(interval)  # Pauză pentru a permite vizualizarea mișcării
 
     plt.show()
-
