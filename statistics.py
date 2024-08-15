@@ -7,16 +7,17 @@ def max_size(my_list):
     size = len(my_list)
     idx = 0
     for i in range(1,size,1):
-        if(len(my_list[i]) > len(my_list[idx])):
+        if len((my_list[i])[0]) > len((my_list[idx])[0]):
             idx = i
 
-    return len(my_list[idx])
+    return len((my_list[idx])[0])
 
 
 def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
 
     size = len(start)
     optimal_paths = [[],[],[],[]]
+    Q_table = None
 
     for i in range(size):
 
@@ -27,18 +28,18 @@ def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rat
         while paths > 0:
             Q_table = ql.q_learning(labyrinth, start[i], finish[i], epsilon, alpha, gamma,total_episodes,decay_rate)
             best_path = path.find_best_path(start[i], finish[i], labyrinth, Q_table)
-            if best_path[-1] == finish[i]:
+            if (best_path[0])[-1] == finish[i]:
                 optimal_paths[i].append(best_path)
                 paths -= 1
 
 
     for i in range(size):
         biggest_len = max_size(optimal_paths[i])
-        optimal_paths[i] = list(filter(lambda p: len(p) == biggest_len, optimal_paths[i]))
+        optimal_paths[i] = (sorted( list(filter(lambda p: len(p[0]) == biggest_len, optimal_paths[i])), key=lambda x: x[1].item() / len(x[0]), reverse=True ))[:1]
 
     print("Statistics:\n")
     for i in range(size):
-        print(f"Robot {i + 1} discovered {len(optimal_paths[i])} optimal paths of length {len(optimal_paths[i][0])}:\n")
-        for j in range(len(optimal_paths[i])):
-            print(optimal_paths[i][j])
+        print(f"Robot {i + 1} discovered an optimal path of length {len(((optimal_paths[i])[0])[0])}:\n")
+        print(optimal_paths[i][0][0])
         print("")
+
