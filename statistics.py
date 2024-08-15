@@ -47,4 +47,4 @@ def analysis(start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
         user_answer = simpledialog.askstring("Input", "Doriti vizualizare in timp real? (YES/NO)")
         if user_answer == "YES" or user_answer == "yes":
             idx = simpledialog.askinteger("Input", "Ce robot doriți să urmăriți? (1-4)", minvalue=1, maxvalue=4) - 1
-            visualiser.plot_live_maze((optimal_paths[idx][0])[2],(optimal_paths[idx][0])[0],0.03,3)
+            visualiser.plot_live_maze((optimal_paths[idx][0])[2],(optimal_paths[idx][0])[0],0.02,3)
