@@ -8,13 +8,13 @@ matrix = np.random.rand(8, 8)  # O matrice 8x8 cu valori aleatorii
 coordinates = [(0, 0), (0, 1), (1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
 
 def interpolate_coordinates(start, end, steps):
-    # Generează coordonatele intermediare între două puncte
+    """Generează coordonatele intermediare între două puncte."""
     x_coords = np.linspace(start[1], end[1], steps)
     y_coords = np.linspace(start[0], end[0], steps)
     return list(zip(y_coords, x_coords))
 
 def plot_live_maze(matrix, coordinates, interval, steps):
-    #Afișează matricea și animă mișcarea între coordonatele date
+    """Afișează matricea și animă mișcarea între coordonatele date."""
     plt.figure(figsize=(8, 8))
 
     for i in range(len(coordinates) - 1):
@@ -24,11 +24,15 @@ def plot_live_maze(matrix, coordinates, interval, steps):
         interpolated_coords = interpolate_coordinates(start, end, steps)
 
         for lin, col in interpolated_coords:
-            plt.clf()  #Curăță figura pentru următoarea actualizare
+            plt.clf()  # Curăță figura pentru următoarea actualizare
             plt.imshow(matrix, cmap='Blues', interpolation='nearest')
 
             # Evidențierea elementului curent cu roșu
             plt.scatter(col, lin, s=500, color='red', edgecolor='black')
+
+            # Afișează valorile fiecărei casete din matrice
+            for (i, j), value in np.ndenumerate(matrix):
+                plt.text(j, i, f'{value:.2f}', color='black', ha='center', va='center')
 
             plt.xticks(range(matrix.shape[1]))
             plt.yticks(range(matrix.shape[0]))
@@ -40,6 +44,7 @@ def plot_live_maze(matrix, coordinates, interval, steps):
 
     plt.show()
 
+
 def start():
     global steps
     global interval
@@ -47,7 +52,3 @@ def start():
     global coordinates
     user_input = simpledialog.askinteger("Input", "Ce robot doriti sa urmariti?", minvalue=1, maxvalue=4)
     plot_live_maze(matrix, coordinates, interval, steps)
-
-
-
-
