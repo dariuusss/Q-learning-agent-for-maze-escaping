@@ -2,6 +2,8 @@ import labyrinth as maze
 import multiply as mp
 import q_learning as ql
 import path
+import visualiser
+from tkinter import simpledialog
 
 def max_size(my_list):
     size = len(my_list)
@@ -39,3 +41,7 @@ def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rat
         print(f"Robot {i + 1} discovered an optimal path of length {len(((optimal_paths[i])[0])[0])} and average score of {optimal_paths[i][0][1].item() / len(optimal_paths[i][0][0])}:\n")
         print((optimal_paths[i][0])[0])
         print("")
+
+    user_answer = simpledialog.askstring("Input", "Doriti vizualizare in timp real? (YES or NO)")
+    if user_answer == "YES":
+        visualiser.start()

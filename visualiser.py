@@ -2,13 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tkinter import simpledialog
 
+steps = 7
+interval = 0.05
+matrix = np.random.rand(8, 8)  # O matrice 8x8 cu valori aleatorii
+coordinates = [(0, 0), (0, 1), (1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
+
 def interpolate_coordinates(start, end, steps):
     # Generează coordonatele intermediare între două puncte
     x_coords = np.linspace(start[1], end[1], steps)
     y_coords = np.linspace(start[0], end[0], steps)
     return list(zip(y_coords, x_coords))
 
-def highlight_matrix_live(matrix, coordinates, interval, steps):
+def plot_live_maze(matrix, coordinates, interval, steps):
     #Afișează matricea și animă mișcarea între coordonatele date
     plt.figure(figsize=(8, 8))
 
@@ -35,16 +40,14 @@ def highlight_matrix_live(matrix, coordinates, interval, steps):
 
     plt.show()
 
-minvalue = 1
-maxvalue = 4
+def start():
+    global steps
+    global interval
+    global matrix
+    global coordinates
+    user_input = simpledialog.askinteger("Input", "Ce robot doriti sa urmariti?", minvalue=1, maxvalue=4)
+    plot_live_maze(matrix, coordinates, interval, steps)
 
-user_input = simpledialog.askinteger("Input", "Ce robot doriti sa urmariti?", minvalue = 1, maxvalue = 4)
 
-steps = 7
 
-interval = 0.05
 
-matrix = np.random.rand(8, 8)  # O matrice 8x8 cu valori aleatorii
-coordinates = [(0, 0), (0, 1), (1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
-
-highlight_matrix_live(matrix, coordinates, interval, steps)
