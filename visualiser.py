@@ -3,12 +3,6 @@ import matplotlib.pyplot as plt
 from tkinter import simpledialog
 import tkinter as tk
 
-steps = 4
-interval = 0.03
-matrix = np.random.rand(8, 8)  # O matrice 8x8 cu valori aleatorii
-coordinates = [(0, 0), (0, 1), (1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
-
-
 def interpolate_coordinates(start, end, steps):
     """Generează coordonatele intermediare între două puncte."""
     x_coords = np.linspace(start[1], end[1], steps)
@@ -65,17 +59,3 @@ def plot_live_maze(matrix, coordinates, interval, steps):
 
     plt.show()
 
-
-def start():
-    global steps
-    global interval
-    global matrix
-    global coordinates
-    # Creează fereastra principală
-    root = tk.Tk()
-    root.withdraw()  # Ascunde fereastra principală
-
-    user_input = simpledialog.askinteger("Input", "Ce robot doriți să urmăriți? (1-4)", minvalue=1, maxvalue=4)
-
-    # Apelarea funcției de plotare
-    plot_live_maze(matrix, coordinates, interval, steps)

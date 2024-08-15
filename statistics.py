@@ -15,13 +15,13 @@ def max_size(my_list):
     return len((my_list[idx])[0])
 
 
-def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
+def analysis(start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
 
     size = len(start)
     optimal_paths = [[],[],[],[]]
 
     for i in range(size):
-        maze.fill_labyrinth(labyrinth, start[i], finish[i])
+        labyrinth = maze.fill_labyrinth(start[i], finish[i])
         mp.initialise_multipliers()
         paths = 3
 
@@ -46,4 +46,5 @@ def analysis(labyrinth,start,finish,gamma,alpha,epsilon,total_episodes,decay_rat
     while user_answer != "NO" and user_answer != "no":
         user_answer = simpledialog.askstring("Input", "Doriti vizualizare in timp real? (YES/NO)")
         if user_answer == "YES" or user_answer == "yes":
-            visualiser.start()
+            idx = simpledialog.askinteger("Input", "Ce robot doriți să urmăriți? (1-4)", minvalue=1, maxvalue=4) - 1
+            visualiser.plot_live_maze((optimal_paths[idx][0])[2],(optimal_paths[idx][0])[0],0.03,3)

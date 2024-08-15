@@ -19,4 +19,4 @@ def find_best_path(start,finish,labyrinth,Q):
         score = score + Q[state[0], state[1],action]
         state = asr.next_state(state, action)
         path.append(state)
-    return (path,score)
+    return (path,score,labyrinth)

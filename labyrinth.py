@@ -1,6 +1,6 @@
 import numpy as np
 
-def initialise_labyrinth():
+def fill_labyrinth(start,finish):
     labyrinth = np.array([
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
@@ -11,9 +11,6 @@ def initialise_labyrinth():
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0]
     ])
-    return labyrinth
-
-def fill_labyrinth(labyrinth,start,finish):
     labyrinth[0][5] = 1
     labyrinth[2][2] = 2
     labyrinth[4][1] = 4
@@ -28,11 +25,12 @@ def fill_labyrinth(labyrinth,start,finish):
         for j in range(8):
             if labyrinth[i][j] == 0:
                 if labyrinth[i][j] in used_values:
-                    labyrinth[i][j] = pow(j + 2 * i + 2, (i + j) % 3) / 10000
+                    labyrinth[i][j] = pow(j + 2 * i + 2, (i + j) % 3) / 10
                 else:
-                    labyrinth[i][j] = (pow(j + 2 * i + 1, (i + j) % 3) * 10 + 8) / 10000
+                    labyrinth[i][j] = (pow(j + 2 * i + 1, (i + j) % 3) * 10 + 8) / 10
 
     i,j = start
     labyrinth[i][j] = 0
     i,j = finish
     labyrinth[i][j] = 10000
+    return labyrinth
