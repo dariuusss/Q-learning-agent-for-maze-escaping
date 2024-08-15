@@ -1,25 +1,25 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from tkinter import simpledialog
 
 def interpolate_coordinates(start, end, steps):
-    """Generează coordonatele intermediare între două puncte."""
+    # Generează coordonatele intermediare între două puncte
     x_coords = np.linspace(start[1], end[1], steps)
     y_coords = np.linspace(start[0], end[0], steps)
     return list(zip(y_coords, x_coords))
 
-def highlight_matrix_live(matrix, coordinates, interval=0.05, steps=1):
-    """Afișează matricea și animă mișcarea între coordonatele date."""
-    plt.figure(figsize=(6, 6))
+def highlight_matrix_live(matrix, coordinates, interval, steps):
+    #Afișează matricea și animă mișcarea între coordonatele date
+    plt.figure(figsize=(8, 8))
 
     for i in range(len(coordinates) - 1):
         start = coordinates[i]
         end = coordinates[i + 1]
 
-        # Obține coordonatele intermediare
         interpolated_coords = interpolate_coordinates(start, end, steps)
 
         for lin, col in interpolated_coords:
-            plt.clf()  # Curăță figura pentru următoarea actualizare
+            plt.clf()  #Curăță figura pentru următoarea actualizare
             plt.imshow(matrix, cmap='Blues', interpolation='nearest')
 
             # Evidențierea elementului curent cu roșu
@@ -35,9 +35,16 @@ def highlight_matrix_live(matrix, coordinates, interval=0.05, steps=1):
 
     plt.show()
 
-# Exemplu de utilizare
+minvalue = 1
+maxvalue = 4
+
+user_input = simpledialog.askinteger("Input", "Ce robot doriti sa urmariti?", minvalue = 1, maxvalue = 4)
+
+steps = 7
+
+interval = 0.05
+
 matrix = np.random.rand(8, 8)  # O matrice 8x8 cu valori aleatorii
 coordinates = [(0, 0), (0, 1), (1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
 
-# Afișăm imaginile în timp real
-highlight_matrix_live(matrix, coordinates, interval=0.01, steps=10)
+highlight_matrix_live(matrix, coordinates, interval, steps)
