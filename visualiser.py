@@ -42,9 +42,6 @@ def plot_live_maze(matrix, coordinates, interval, steps, score_list):
 
             plt.title(f'Mișcare de la ({start[0]},{start[1]}) la ({end[0]},{end[1]})')
 
-            plt.text(1.0, 1.05, f'live score : {score:.2f}',
-                     fontsize=20, color='blue', ha='right', va='bottom',
-                     transform=plt.gca().transAxes)
 
             plt.pause(interval)
 
@@ -66,11 +63,5 @@ def plot_live_maze(matrix, coordinates, interval, steps, score_list):
 
     for y in range(matrix.shape[0] + 1):
         plt.plot([-0.5, matrix.shape[1] - 0.5], [y - 0.5, y - 0.5], color='black', linewidth=1)
-
-
-    score = score_list[-1]
-    plt.text(1.0, 1.05, f'live score : {score:.2f}',
-             fontsize=20, color='blue', ha='right', va='bottom',
-             transform=plt.gca().transAxes)
 
     plt.show()

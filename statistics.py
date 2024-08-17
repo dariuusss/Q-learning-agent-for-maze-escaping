@@ -36,7 +36,7 @@ def analysis(start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
 
     print("Statistics:\n")
     for i in range(size):
-        print(f"Robot {i + 1} discovered an optimal path of length {len(((optimal_paths[i])[0])[0])} and average score of {optimal_paths[i][0][1].item() / len(optimal_paths[i][0][0])}:\n")
+        print(f"Robot {i + 1}'s discovered optimal path:\n")
         print((optimal_paths[i][0])[0])
         print("")
 
