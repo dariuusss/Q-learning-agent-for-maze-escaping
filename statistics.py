@@ -1,5 +1,5 @@
 import labyrinth as maze
-import multiply as mp
+import mp
 import q_learning as ql
 import path
 import visualiser
@@ -24,12 +24,14 @@ def analysis(start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
         paths = 3
 
         while paths > 0:
-            mp.initialise_multipliers()
             Q_table = ql.q_learning(labyrinth, start[i], finish[i], epsilon, alpha, gamma,total_episodes,decay_rate)
             best_path = path.find_best_path(start[i], finish[i], labyrinth, Q_table)
             if (best_path[0])[-1] == finish[i]:
+                for t in range(mp.still_rounds):
+                    best_path[0].append('#')
                 optimal_paths[i].append(best_path)
                 paths -= 1
+
 
     for i in range(size):
         optimal_paths[i] = sorted(optimal_paths[i], key= lambda x: x[1].item() / len(x[0]), reverse = True )[: 1]

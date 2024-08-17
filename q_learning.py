@@ -1,6 +1,7 @@
 import random
 import numpy as np
 import asr
+import mp
 
 def q_learning(labyrinth,start,finish,epsilon,alpha,gamma,total_episodes,decay_rate):
 
@@ -9,6 +10,7 @@ def q_learning(labyrinth,start,finish,epsilon,alpha,gamma,total_episodes,decay_r
     # 0 = up ;; 1 = down ;; 2 = left ;; 3 = right
 
     for episode in range(total_episodes):
+        mp.initialise_multipliers()
         current_state = start
         visited = set()
         while current_state != finish:

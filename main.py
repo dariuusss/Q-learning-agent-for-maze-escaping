@@ -1,8 +1,4 @@
-import labyrinth as maze
 import statistics as stats
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 
 start =  [(0,0), (0,7), (7,0), (7,7)]
 finish = [(7,7), (7,0), (0,7), (0,0)]

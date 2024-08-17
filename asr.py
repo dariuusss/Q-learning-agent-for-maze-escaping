@@ -1,4 +1,4 @@
-import multiply as mp
+import mp
 
 #asr stands for actions, states and rewards
 def possible_actions(labyrinth,current_state, visited):  # current_state is a tuple of coordinates
@@ -39,6 +39,10 @@ def reward(labyrinth,current_state, action):
     ii = the_next_state[0]
     jj = the_next_state[1]
     y = labyrinth[ii, jj]
+
+    if x in mp.penalties:
+        mp.still_rounds = mp.still_rounds + x - 10
+        return 0
 
     if x not in mp.multipliers and y not in mp.multipliers:
         return_value = mp.multiplier * y
