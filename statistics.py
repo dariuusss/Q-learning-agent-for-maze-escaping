@@ -21,10 +21,10 @@ def analysis(start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
 
     for i in range(size):
         labyrinth = maze.fill_labyrinth(start[i], finish[i])
-        mp.initialise_multipliers()
         paths = 3
 
         while paths > 0:
+            mp.initialise_multipliers()
             Q_table = ql.q_learning(labyrinth, start[i], finish[i], epsilon, alpha, gamma,total_episodes,decay_rate)
             best_path = path.find_best_path(start[i], finish[i], labyrinth, Q_table)
             if (best_path[0])[-1] == finish[i]:
@@ -32,8 +32,7 @@ def analysis(start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
                 paths -= 1
 
     for i in range(size):
-        biggest_len = max_size(optimal_paths[i])
-        optimal_paths[i] = (sorted( list(filter(lambda p: len(p[0]) == biggest_len, optimal_paths[i])), key=lambda x: x[1].item() / len(x[0]), reverse=True ))[:1]
+        optimal_paths[i] = sorted(optimal_paths[i], key= lambda x: x[1].item() / len(x[0]), reverse = True )[: 1]
 
     print("Statistics:\n")
     for i in range(size):
