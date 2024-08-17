@@ -39,7 +39,7 @@ def analysis(start,finish,gamma,alpha,epsilon,total_episodes,decay_rate):
     print("Statistics:\n")
     for i in range(size):
         print(f"Robot {i + 1}'s discovered optimal path:\n")
-        print((optimal_paths[i][0])[0])
+        path.print_path((optimal_paths[i][0])[0])
         print("")
 
     user_answer = None

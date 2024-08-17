@@ -22,3 +22,12 @@ def find_best_path(start,finish,labyrinth,Q):
         state = asr.next_state(state, action)
         path.append(state)
     return (path,score,labyrinth,score_list)
+
+
+def print_path(path):
+    i = 0
+    j = len(path)
+    while i < j and path[i] != '#':
+        i = i + 1
+    print(path[:i])
+

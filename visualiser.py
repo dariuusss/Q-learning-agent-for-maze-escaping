@@ -48,7 +48,6 @@ def plot_live_maze(matrix, coordinates, interval, steps, score_list):
 
             plt.title(f'Mișcare de la ({start[0]},{start[1]}) la ({end[0]},{end[1]})')
 
-
             plt.pause(interval)
 
     plt.clf()
