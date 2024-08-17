@@ -25,9 +25,8 @@ def find_best_path(start,finish,labyrinth,Q):
 
 
 def print_path(path):
-    i = 0
-    j = len(path)
-    while i < j and path[i] != '#':
-        i = i + 1
-    print(path[:i])
-
+    try:
+        finish = path.index('#')
+    except ValueError:
+        finish = len(path)
+    print(path[:finish])

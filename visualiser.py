@@ -12,11 +12,10 @@ def plot_live_maze(matrix, coordinates, interval, steps, score_list):
 
     state_matrix = np.ones(matrix.shape)
 
-    finish = coordinates.index('#')
-    if not isinstance(finish,int):
+    try:
+        finish = coordinates.index('#') - 1
+    except ValueError:
         finish = len(coordinates) - 1
-    else:
-        finish = finish - 1
 
     for i in range(finish):
         start = coordinates[i]
