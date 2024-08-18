@@ -3,12 +3,13 @@ import numpy as np
 import asr
 import mp
 
+visited = None
 def q_learning(labyrinth,start,finish,epsilon,alpha,gamma,total_episodes,decay_rate):
 
     Q = np.zeros((labyrinth.shape[0], labyrinth.shape[1], 4))  # 4 directions
 
     # 0 = up ;; 1 = down ;; 2 = left ;; 3 = right
-
+    global visited
     for episode in range(total_episodes):
         mp.initialise_multipliers()
         current_state = start

@@ -7,3 +7,4 @@ Imbunatatiri aduse fata de proiectul initial:
 * criteriul de optimalitate a drumului e dat de un raport de tip Greedy:  <sup>total_reward</sup>/<sub>path_length</sub>
 * implementarea unei interfete grafice simple care permite utilizatorului sa vizualizeze in timp real evolutia traseului unui robot la alegere
 * adaugarea unor pedepse de tipul "stai n ture"
+* oferirea posibilitatii revenirii la stari anterioare cel mult o singura data

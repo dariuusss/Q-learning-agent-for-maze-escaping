@@ -1,4 +1,5 @@
 import mp
+import q_learning as ql
 
 #asr stands for actions, states and rewards
 def possible_actions(labyrinth,current_state, visited):  # current_state is a tuple of coordinates
@@ -39,6 +40,11 @@ def reward(labyrinth,current_state, action):
     ii = the_next_state[0]
     jj = the_next_state[1]
     y = labyrinth[ii, jj]
+
+    if x == 17:
+        ql.visited = set()
+        labyrinth[i, j] = 0 # at least once to avoid possible infinite loops
+        return 0
 
     if x in mp.penalties:
         mp.still_rounds = mp.still_rounds + x - 10
