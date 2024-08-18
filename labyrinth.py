@@ -29,6 +29,8 @@ def fill_labyrinth(start,finish):
     labyrinth[1][1] = 14
     labyrinth[3][6] = 15
     # 26-30: penalties
+    labyrinth[4][7] = 16
+    # 32: restarter + score_penalty
     for i in range(labyrinth.shape[0]):
         for j in range(labyrinth.shape[1]):
             if labyrinth[i][j] == 0:
