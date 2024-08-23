@@ -2,13 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def interpolate_coordinates(start, end, steps):
-    # Functie de interpolare simpla
     lin_space = np.linspace(start[0], end[0], steps)
     col_space = np.linspace(start[1], end[1], steps)
     return list(zip(lin_space, col_space))
 
 def plot_live_maze(matrix, coordinates, interval, steps, score_list):
-    plt.figure(figsize=(19.1, 11))  # Dimensiune mare pentru figura
+    plt.figure(figsize=(19.1, 11))
 
     state_matrix = np.ones(matrix.shape)
 
@@ -20,7 +19,6 @@ def plot_live_maze(matrix, coordinates, interval, steps, score_list):
     for i in range(finish):
         start = coordinates[i]
         end = coordinates[i + 1]
-        score = score_list[i]
 
         interpolated_coords = interpolate_coordinates(start, end, steps)
 
