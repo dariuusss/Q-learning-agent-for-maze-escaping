@@ -4,7 +4,7 @@ multiplier = None
 penalties = None
 still_rounds = None
 
-#it stands for multipliers && penalties
+# it stands for multipliers && penalties
 def initialise_multipliers():
     global multipliers
     global multipliers_map

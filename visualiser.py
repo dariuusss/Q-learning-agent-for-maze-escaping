@@ -6,7 +6,7 @@ def interpolate_coordinates(start, end, steps):
     col_space = np.linspace(start[1], end[1], steps)
     return list(zip(lin_space, col_space))
 
-def plot_live_maze(matrix, coordinates, interval, steps, score_list):
+def plot_live_maze(matrix, coordinates, interval, steps):
     plt.figure(figsize=(19.1, 11))
 
     state_matrix = np.ones(matrix.shape)

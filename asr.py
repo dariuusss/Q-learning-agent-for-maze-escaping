@@ -43,7 +43,7 @@ def reward(labyrinth,current_state, action):
 
     if x == 17:
         ql.visited = set()
-        labyrinth[i, j] = 0 # at least once to avoid possible infinite loops
+        labyrinth[i, j] = 0 # at most once to avoid possible infinite loops
         return 0
 
     if x in mp.penalties:
